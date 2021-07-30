@@ -216,3 +216,26 @@ function nthMostCommon(str, amount) {
 let occur = nthMostCommon(str, 5);
 
 console.log(occur);
+
+// refactored getTopWords
+
+function getTopWords(str, tagCount = 5) {
+  let wordCounts = {};
+
+  str.match(/\w+/g).forEach((w) => {
+    if (!stopWords.includes(w)) {
+      if (wordCounts[w]) wordCounts[w]++;
+      else wordCounts[w] = 1;
+    }
+  });
+  let sortable = [];
+  for (var w in wordCounts) {
+    sortable.push([w, wordCounts[w]]);
+  }
+  sortable.sort((a, b) => {
+    return b[1] - a[1];
+  });
+  const tags = sortable.slice(0, tagCount).map((e) => e[0]);
+
+  return tags;
+}
