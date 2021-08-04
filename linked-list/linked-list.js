@@ -25,6 +25,32 @@ class LinkedList {
     }
   }
 
+  insertAfter(value, afterValue) {
+    const existingNode = this.find(afterValue)
+
+    if(existingNode) {
+      const newNode = { value: value, next: existingNode.next };
+      existingNode.next = newNode
+    }
+  }
+
+  find(value) {
+    if(!this.head) {
+      return null;
+    }
+
+    let curNode = this.head
+
+    while(curNode) {
+      if(curNode.value === value) {
+        return curNode
+      }
+      curNode = curNode.next
+    }
+
+    return null
+  }
+
   delete(value) {
     if (!this.head) {
       return null;
@@ -70,3 +96,10 @@ linkedList1.delete(42);
 linkedList1.delete(12.45);
 
 console.log(linkedList1.toArray());
+console.log(linkedList1.find("Hello"))
+console.log(linkedList1.find('matt'))
+
+linkedList1.insertAfter("new Value", "Hello")
+linkedList1.insertAfter("new Value", "erf")
+
+console.log(linkedList1.toArray())
