@@ -1,4 +1,4 @@
-class LinkedList {
+const LinkedList = class LinkedList {
   constructor() {
     this.head = null; // first element of the list
     this.tail = null; // last element of the list
@@ -74,6 +74,23 @@ class LinkedList {
     }
   }
 
+  deleteHead() {
+    if(!this.head) {
+      return null
+    }
+
+    const deletedItem = this.head
+
+    if(this.head.next) {
+      this.head = this.head.next
+    } else {
+      this.head = null
+      this.tail = null
+    }
+
+    return deletedItem
+  }
+
   toArray() {
     const elements = [];
     let curNode = this.head;
@@ -103,3 +120,5 @@ linkedList1.insertAfter("new Value", "Hello")
 linkedList1.insertAfter("new Value", "erf")
 
 console.log(linkedList1.toArray())
+
+module.exports = LinkedList
