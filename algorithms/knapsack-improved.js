@@ -65,3 +65,5 @@ const maxWeight = 8
 
 const sack = knapsack(items,  maxWeight, items.length - 1)
 console.log(sack)
+
+// Not finished!! 
