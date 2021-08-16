@@ -28,3 +28,4 @@ function findElement(sortedArr, element, offset) {
   const arr = [1, 5, 7, 13, 99, 100];
   
   console.log(findElement(arr, 99, 0));
+
