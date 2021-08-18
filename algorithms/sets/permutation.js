@@ -39,4 +39,31 @@ const todoListItems = [
     'order food'
 ]
 
-console.log(getPermutations(todoListItems))
+// console.log(getPermutations(todoListItems))
+
+
+// With Repetitions 
+
+function getPermutationsNoRep(options, length) {
+    const permutations = []
+
+    if(length === 1) {
+        return options.map(option => [option])
+    }
+
+    const partialPermutations = getPermutationsNoRep(options, length - 1)
+
+    for(const option of options) {
+        for(const existingPermutation of partialPermutations) {
+            permutations.push([option].concat(existingPermutation))
+        }
+    }
+
+    return permutations
+}
+
+
+const digits = [1, 2, 3, 4, 5, 6]
+const resultLength = 6
+
+console.log(getPermutationsNoRep(digits, resultLength))
